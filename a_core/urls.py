@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from a_user.views import profile_view
 from a_home.views import *
 
 urlpatterns = [
@@ -25,6 +26,7 @@ urlpatterns = [
     path('accounts/',include('allauth.urls')),
     path('',home_view,name='home'),
     path('profile/', include('a_user.urls')),
+    path('@<username>/',profile_view,name = 'profile_view')
 ]
 
 urlpatterns +=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
