@@ -24,9 +24,9 @@ from a_home.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('allauth.urls')),
-    path('',home_view,name='home'),
+    path('',include('a_rtchat.urls')),
     path('profile/', include('a_user.urls')),
-    path('@<username>/',profile_view,name = 'profile_view')
+    path('@<username>/',profile_view,name = 'profile')
 ]
 
 urlpatterns +=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
