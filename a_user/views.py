@@ -10,12 +10,16 @@ from .form import *
 
 def profile_view(request, username=None):
     if username:
+        # Show that user's profile
         profile = get_object_or_404(User, username=username).profile
-    try:
-        profile = request.user.profile
-    except:
-        return redirect('account_login')
-    return render(request,'a_user/profile.html',{'profile':profile})
+    else:
+        # Show the logged-in user's profile
+        try:
+            profile = request.user.profile
+        except:
+            return redirect('account_login')
+
+    return render(request, 'a_user/profile.html', {'profile': profile})
 
 @login_required
 def profile_edit_view(request):
