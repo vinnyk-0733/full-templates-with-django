@@ -1,0 +1,14 @@
+{% extends "layout/box.html" %}
+ 
+{% block content %}
+
+<h1>New Group Chat</h1>
+
+<form method='POST'>
+    {% csrf_token %}
+    {{form}}
+    <button class = 'mt-2' type='submit'>Create Grouup Chat</button>
+
+    
+</form>
+{% endblock %}
